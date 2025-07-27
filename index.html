@@ -321,6 +321,19 @@
         #link-to-album button:hover {
             background-color: #d81b60;
         }
+
+        @media (max-width: 600px) {
+            #link-to-album {
+                margin-bottom: 60px;
+            }
+        }
+
+        body, html, #wrapper, #info, #clock-box, h1, p, b, date, time, button, img, a {
+            user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+        }
     </style>
 </head>
 
@@ -356,8 +369,8 @@
             </div>
         </div>
 
-        <a href="./page2.html" id="link-to-album">
-            <button>Ảnh chúng mình</button>
+        <a href="#" id="link-to-album">
+            <button id="album-btn">Ảnh chúng mình</button>
         </a>
 
         <audio id="myAudio">
@@ -367,7 +380,40 @@
 
     </div>
     <script src="./script.js"></script>
+    <script>
+        // Reload trang khi resize cửa sổ
+        let resizeTimeout;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () {
+                location.reload();
+            }, 200);
+        });
 
+        // Chặn sao chép, chặn tải ảnh, chặn kéo ảnh
+        document.addEventListener('contextmenu', function (e) {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+        document.addEventListener('copy', function (e) {
+            e.preventDefault();
+        });
+        document.addEventListener('dragstart', function (e) {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+
+        // Chặn kéo ngang/dọc trên mobile
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // Ẩn link khi bấm nút, chỉ chuyển trang khi click nút
+        document.getElementById('album-btn').addEventListener('click', function (e) {
+            window.location.href = './page2.html';
+        });
+        document.getElementById('link-to-album').addEventListener('click', function (e) {
+            e.preventDefault();
+        });
+    </script>
 </body>
 
 </html>
