@@ -20,7 +20,6 @@
             top: 0;
             left: 0;
             z-index: -1;
-           
         }
 
         #c {
@@ -38,6 +37,7 @@
             grid-auto-rows: minmax(auto, auto);
             color: #3e3e3e;
             text-shadow: 0.4px 0.4px 0.4px rgba(0, 0, 0, .2);
+            min-height: 100vh;
         }
 
         a {
@@ -71,6 +71,7 @@
             grid-auto-rows: minmax(auto, auto);
             grid-row-gap: 10px;
             margin-top: 1.6rem;
+            width: 100%;
         }
 
         #clock-box,
@@ -127,6 +128,7 @@
             height: 160px;
             border-radius: 50%;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, .2);
+            object-fit: cover;
         }
 
         #heart {
@@ -146,19 +148,15 @@
             0% {
                 transform: scale(1);
             }
-
             25% {
                 transform: scale(1.2);
             }
-
             50% {
                 transform: scale(1);
             }
-
             75% {
                 transform: scale(1.2);
             }
-
             100% {
                 transform: scale(1);
             }
@@ -193,42 +191,93 @@
             align-items: center;
         }
 
-        
-        @media (max-width: 600px) {
-            #info {
-                flex-direction: row;
-                overflow-x: auto;
-            }
-
-            #info .one,
-            #info #heart,
-            #info .two {
-                margin: 0 10px;
-            }
-        }
-
+        /* Responsive styles */
         @media (max-width: 992px) {
             #wrapper {
-                grid-column: span 12;
+                grid-column: 1 / 13;
+                padding: 0 10px;
             }
-
             #clock-box #clock {
                 grid-column: 2 / 12;
             }
-
             .avt {
                 width: 120px;
                 height: 120px;
             }
-
             #info .one,
             #info .two {
                 grid-column: span 12;
             }
-
             #heart {
                 grid-column: span 12;
                 padding-bottom: 1rem;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            html, body {
+                overflow: auto;
+            }
+            #wrapper {
+                grid-column: 1 / 13;
+                grid-template-columns: 1fr;
+                margin-top: 0.5rem;
+                padding: 0 5px;
+            }
+            h1 {
+                grid-column: 1 / 2;
+                font-size: 26px;
+                margin-top: 0.5rem;
+            }
+            #info {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+                padding: 0;
+            }
+            #info .one,
+            #info .two {
+                margin: 0;
+                padding: 0;
+            }
+            .avt {
+                width: 80px;
+                height: 80px;
+            }
+            #heart {
+                font-size: 40px;
+                padding-bottom: 0.5rem;
+            }
+            /* Center clock-box on mobile */
+            #clock-box {
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                grid-column: 1 / 2;
+                padding: 0;
+            }
+            #clock-box #clock {
+                grid-column: 1 / 2;
+                font-size: 1.2rem;
+                padding: .4rem 0.5rem;
+                margin: 0 auto;
+            }
+            .time-part {
+                font-size: 1.2rem;
+                padding: 0.2rem 0.5rem;
+            }
+            date {
+                font-size: 18px;
+            }
+            b {
+                font-size: 14px;
+            }
+            #link-to-album button {
+                font-size: 14px;
+                padding: 0.6rem 1.2rem;
             }
         }
 
