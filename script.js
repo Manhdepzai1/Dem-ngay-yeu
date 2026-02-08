@@ -123,7 +123,7 @@ function playAudio() {
 }
 
 
-const yourDate = new Date("2025-07-11T00:00:00");
+const yourDate = new Date("2026-02-07T00:00:00");
 
 document.addEventListener("DOMContentLoaded", function () {
   var hoursElement = document.getElementById("hours");
@@ -163,3 +163,4 @@ developControl.addEventListener("click", () => {
 resetControl.addEventListener("click", () => {
   polaroidPhoto.classList.remove("is-developed");
 });
+
